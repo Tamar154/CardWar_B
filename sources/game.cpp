@@ -52,14 +52,58 @@ void Game::dealCards()
 
 void Game::playTurn()
 {
+    if (this->p1.stacksize() == 0 || this->p2.stacksize() == 0)
+    {
+        throw string("Game ended");
+    }
+    if (&p1 == &p2)
+    {
+        throw("Game cannot be played by one player.");
+    }
+
+    Card c1 = this->p1.playOpenCard();
+    Card c2 = this->p2.playOpenCard();
+
+    int numOfCardsToTake = 2;
+    while (c1.getRank() == c2.getRank())
+    {
+        this->p1.playClosedCard();
+        this->p2.playClosedCard();
+        c1 = this->p1.playOpenCard();
+        c2 = this->p2.playOpenCard();
+        numOfCardsToTake += 4;
+    }
+
+    // p1 takes the cards.
+    if (c1.getRank() > c2.getRank())
+    {
+        this->p1.setCardsTaken(p1.cardesTaken() + numOfCardsToTake);
+    }
+    // p2 takes the cards.
+    else
+    {
+        this->p2.setCardsTaken(p2.cardesTaken() + numOfCardsToTake);
+    }
 }
 
 void Game::printLastTurn()
 {
 }
 
+/*
+EDGE CASE: there are 2 or 4 cards left, and could be a tie
+*/
 void Game::playAll()
 {
+    if (this->p1.stacksize() == 0 || this->p2.stacksize() == 0)
+    {
+        throw string("Game ended");
+    }
+
+    while (this->p1.stacksize() != 0 && this->p2.stacksize() != 0)
+    {
+        playTurn();
+    }
 }
 
 void Game::printWiner()

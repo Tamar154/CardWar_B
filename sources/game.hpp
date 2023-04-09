@@ -14,6 +14,7 @@ namespace ariel
     {
         Player& p1;
         Player& p2;
+        int numOfTurns = 0; 
         vector<Card> deck;
 
     public:
@@ -25,6 +26,8 @@ namespace ariel
 
         void playTurn();
         void printLastTurn();
+
+
         void playAll();
         void printWiner();
         void printLog();
