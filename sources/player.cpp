@@ -25,6 +25,11 @@ int Player::cardesTaken()
     return this->cardsTaken;
 }
 
+string Player::getName()
+{
+    return this->name;
+}
+
 void Player::setCardsTaken(int num)
 {
     this->cardsTaken = num;

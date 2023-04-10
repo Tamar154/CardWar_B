@@ -14,8 +14,9 @@ namespace ariel
     {
         Player& p1;
         Player& p2;
-        int numOfTurns = 0; 
         vector<Card> deck;
+        string lastTurn;
+        string log;
 
     public:
         Game(Player&, Player&);

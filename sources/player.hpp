@@ -23,19 +23,11 @@ namespace ariel
 
         int stacksize();
         int cardesTaken();
+        string getName();
 
         void setCardsTaken(int);
         void addCard(Card card);
         Card playOpenCard();
         void playClosedCard();
-
-        void printCards()
-        {
-            cout << "===========PLAYER CARDS========" << endl;
-            for (Card c : this->deck)
-            {
-                cout << c.getRank() << ", " << c.getSuit() << endl;
-            }
-        }
     };
 }
