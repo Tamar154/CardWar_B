@@ -16,6 +16,7 @@ namespace ariel
         vector<Card> deck;
         int stackSize;
         int cardsTaken;
+        int numOfWins;
 
     public:
         Player();
@@ -26,8 +27,10 @@ namespace ariel
         string getName();
 
         void setCardsTaken(int);
-        void addCard(Card card);
+        void addCard(Card);
         Card playOpenCard();
         void playClosedCard();
+        int getNumOfWins();
+        void setNumOfWins(int);
     };
 }

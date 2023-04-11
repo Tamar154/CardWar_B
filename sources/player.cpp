@@ -4,16 +4,13 @@ using namespace ariel;
 using namespace std;
 
 Player::Player()
-{
-    this->name = "";
-}
+    : name("") {}
 
 Player::Player(string name)
-{
-    this->name = name;
-    this->stackSize = this->deck.size();
-    this->cardsTaken = 0;
-}
+    : name(name),
+      stackSize(this->deck.size()),
+      cardsTaken(0),
+      numOfWins(0) {}
 
 int Player::stacksize()
 {
@@ -52,4 +49,14 @@ void Player::playClosedCard()
 {
     this->deck.erase(this->deck.begin());
     this->stackSize--;
+}
+
+int Player::getNumOfWins()
+{
+    return this->numOfWins;
+}
+
+void Player::setNumOfWins(int i)
+{
+    this->numOfWins = i;
 }
